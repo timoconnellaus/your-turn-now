@@ -62,8 +62,9 @@ function update(dt) {
   player.x = Math.max(0, Math.min(WIDTH - player.size, player.x));
 }
 
-function draw() {
+function draw(t) {
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
+  Background.draw(ctx, WIDTH, HEIGHT, t, player.x);
 
   ctx.fillStyle = "#4a7c3a";
   ctx.fillRect(ground.x, ground.y, ground.w, ground.h);
@@ -77,7 +78,7 @@ function loop(now) {
   const dt = Math.min((now - last) / 1000, 1 / 30); // clamp to avoid big jumps after tab switches
   last = now;
   update(dt);
-  draw();
+  draw(now / 1000);
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);

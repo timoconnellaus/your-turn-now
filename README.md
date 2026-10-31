@@ -33,3 +33,4 @@ Then visit http://localhost:8000.
 ## Turn log
 
 1. Flat level and a square that can run and jump.
+2. Trippy parallax background: colour-cycling sky, spinning sunburst, wobbly hills and glowing bubbles that drift and shift with the player.
