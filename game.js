@@ -14,11 +14,15 @@ const JUMP_SPEED = 750;
 // Level: a single flat floor
 const ground = { x: 0, y: HEIGHT - 80, w: WIDTH, h: 80 };
 
-// Player: just a square
+// Player: a photo sprite (assets/player.png) with a square hitbox
+const PLAYER_SIZE = 48;
+const playerSprite = new Image();
+playerSprite.src = "assets/player.png";
+
 const player = {
   x: 100,
-  y: ground.y - 40,
-  size: 40,
+  y: ground.y - PLAYER_SIZE,
+  size: PLAYER_SIZE,
   vx: 0,
   vy: 0,
   onGround: true,
@@ -69,8 +73,18 @@ function draw(t) {
   ctx.fillStyle = "#4a7c3a";
   ctx.fillRect(ground.x, ground.y, ground.w, ground.h);
 
-  ctx.fillStyle = "#e8504a";
-  ctx.fillRect(player.x, player.y, player.size, player.size);
+  drawPlayer();
+}
+
+function drawPlayer() {
+  const { x, y, size } = player;
+  if (!playerSprite.complete || playerSprite.naturalWidth === 0) {
+    // Sprite not loaded (yet): fall back to the original red square
+    ctx.fillStyle = "#e8504a";
+    ctx.fillRect(x, y, size, size);
+    return;
+  }
+  ctx.drawImage(playerSprite, x, y, size, size);
 }
 
 let last = performance.now();

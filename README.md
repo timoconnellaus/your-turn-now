@@ -34,3 +34,4 @@ Then visit http://localhost:8000.
 
 1. Flat level and a square that can run and jump.
 2. Trippy parallax background: colour-cycling sky, spinning sunburst, wobbly hills and glowing bubbles that drift and shift with the player.
+3. The red square is now a photo sprite (`assets/player.png`): a head cut-out with a transparent background, 48×48 with a matching hitbox.
